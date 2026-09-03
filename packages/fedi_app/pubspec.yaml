@@ -90,7 +90,7 @@ dependencies:
   flutter_cache_manager: 3.1.2
   # reactive programming
   rxdart: 0.27.2
-  async: 2.8.1
+  async: ^2.8.1
   # text size to fit constraints
   auto_size_text: 3.0.0-nullsafety.0
 
@@ -172,7 +172,7 @@ dependencies:
 
   # file picker for media attachment
   file_picker: 4.1.6
-  file: 6.1.2
+  file: ^6.1.2
 
   # unenscape account not field
   html_unescape: 2.0.0
@@ -196,7 +196,7 @@ dependencies:
   jiffy: 4.1.0
 
   # collections extensions
-  collection: 1.15.0
+  collection: ^1.15.0
 
   # customizable switch widget
   flutter_switch: 0.3.2
