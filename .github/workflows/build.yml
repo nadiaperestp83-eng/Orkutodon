@@ -21,7 +21,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
-          java-version: '17'
+          java-version: '11'
 
       # Lê a versão do Flutter fixada no .fvmrc do repo,
       # pra usar exatamente a mesma versão que o projeto espera.
