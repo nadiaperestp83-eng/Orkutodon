@@ -34,14 +34,21 @@ jobs:
         with:
           flutter-version: ${{ steps.fvmrc.outputs.FLUTTER_VERSION }}
           channel: 'stable'
-          cache: true
+          cache: false
+
+      # Cache desligado de propósito (acima). Dependências git (hive, etc.)
+      # já quebraram builds anteriores por causa de clones parciais/corrompidos
+      # herdados de runs anteriores via cache. Cada run começa limpo agora.
+      # Este passo é uma segurança extra caso o runner reaproveite disco.
+      - name: Clear any stale pub git cache
+        run: rm -rf ~/.pub-cache/git
 
       - name: Flutter doctor
         run: flutter doctor -v
 
       - name: Activate Melos
         run: dart pub global activate melos 2.9.0
-  
+
       - name: Melos bootstrap (link workspace packages)
         run: dart pub global run melos bootstrap
 
