@@ -251,12 +251,11 @@ dev_dependencies:
   flutter_driver:
     sdk: flutter
   
-  # Versão flexível para evitar conflito com o SDK atual e o mockito
-  test: ^1.19.0
+  # Versão fixa segura compatível com o build_runner 2.1.4 e integration_test
+  test: 1.16.8
 
-  # easy mock for tests (atualizado para range seguro)
+  # easy mock for tests
   mockito: ^5.0.16
-  
   # build tools runner
   build_runner: 2.1.4
   # build tool to generate json from & to methods
