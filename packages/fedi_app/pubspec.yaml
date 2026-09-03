@@ -226,7 +226,7 @@ dependencies:
   easy_dispose_provider: 1.1.0
 
   # work with path/url parts
-  path: 1.8.0
+  path: ^1.8.0
 
   # code generator: unions, strings, equals & hash, etc
   freezed_annotation: ^0.15.0
