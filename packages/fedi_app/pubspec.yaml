@@ -236,8 +236,8 @@ dev_dependencies:
   
   # sql orm generator
   moor_generator: 4.6.0
-  # Ajustado para aceitar o range do drift antigo exigido pelo hive_generator
-  sqlparser: ^0.21.0
+  # Ajustado para o range exato compatível com o hive_generator e o moor_generator
+  sqlparser: ^0.19.0
 
   # object serialization generator
   hive_generator:
