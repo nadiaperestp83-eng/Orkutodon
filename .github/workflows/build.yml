@@ -49,12 +49,21 @@ jobs:
       - name: Activate Melos
         run: dart pub global activate melos 2.9.0
 
-      # concurrency=1 evita que múltiplos pacotes do monorepo (hive e
-      # hive_flutter, que apontam pro mesmo repo git xal/hive) tentem
-      # clonar a mesma dependência git em paralelo e colidam na mesma
-      # pasta de cache ao mesmo tempo.
+      # Popula o cache da dependência git compartilhada (xal/hive) com
+      # UM único "pub get" sequencial antes do bootstrap. hive e
+      # hive_flutter (em pacotes diferentes do monorepo) apontam pro
+      # mesmo repositório git; se deixarmos o melos bootstrap descobrir
+      # isso sozinho, ele tenta clonar em paralelo pra vários pacotes ao
+      # mesmo tempo e os processos colidem na mesma pasta de cache.
+      # Rodando aqui primeiro, de forma isolada, o clone completo já
+      # existe quando o bootstrap paralelo começar, e os outros pacotes
+      # apenas reaproveitam o cache em vez de clonar de novo.
+      - name: Warm up shared git dependency cache
+        working-directory: packages/fediverse_api_test_utils
+        run: flutter pub get
+
       - name: Melos bootstrap (link workspace packages)
-        run: dart pub global run melos bootstrap --concurrency=1
+        run: dart pub global run melos bootstrap
 
       - name: Create env files
         run: |
