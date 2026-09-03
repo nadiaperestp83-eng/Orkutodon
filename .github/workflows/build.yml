@@ -49,8 +49,12 @@ jobs:
       - name: Activate Melos
         run: dart pub global activate melos 2.9.0
 
+      # concurrency=1 evita que múltiplos pacotes do monorepo (hive e
+      # hive_flutter, que apontam pro mesmo repo git xal/hive) tentem
+      # clonar a mesma dependência git em paralelo e colidam na mesma
+      # pasta de cache ao mesmo tempo.
       - name: Melos bootstrap (link workspace packages)
-        run: dart pub global run melos bootstrap
+        run: dart pub global run melos bootstrap --concurrency=1
 
       - name: Create env files
         run: |
