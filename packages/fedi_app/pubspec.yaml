@@ -264,8 +264,8 @@ dev_dependencies:
   
   # sql orm generator
   moor_generator: 4.6.0
-  # required by sqlparser. Otherwise strange errors -
-  sqlparser: ^0.18.0
+  # Atualizado para compatibilidade com o moor_generator 4.6.0
+  sqlparser: ^0.19.0
 
   # object serialization generator
   hive_generator:
