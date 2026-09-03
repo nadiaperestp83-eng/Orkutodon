@@ -295,10 +295,18 @@ dev_dependencies:
 
   # generate screenshots for stores during UI tests
   # also useful for golden tests
-  screenshots:
-    git:
-      url: https://github.com/xal/screenshots.git
-      ref: b855c90dd78a4e5db447d003dddb84021db9411c
+  # DISABLED: this git dependency (via xal/screenshots.git) pulls in
+  # tool_mobile from git, which now requires Dart SDK >=3.5.0 <4.0.0.
+  # This project is pinned to an older Flutter/Dart SDK (2.14.4 via .fvmrc),
+  # so this dependency breaks `pub get` / `melos bootstrap` entirely.
+  # It is only used for the manual command
+  # `flutter pub global run screenshots:main` (store screenshot generation)
+  # and is not required to build or run the app. Re-enable only if you
+  # also bump the project's Dart/Flutter SDK to >=3.5.0.
+  # screenshots:
+  #   git:
+  #     url: https://github.com/xal/screenshots.git
+  #     ref: b855c90dd78a4e5db447d003dddb84021db9411c
 
   # code generator: unions, strings, equals & hash, etc
   freezed: ^0.15.0+1
