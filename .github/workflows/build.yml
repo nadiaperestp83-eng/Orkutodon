@@ -40,8 +40,8 @@ jobs:
         run: flutter doctor -v
 
       - name: Activate Melos
-        run: dart pub global activate melos
-
+        run: dart pub global activate melos 2.9.0
+  
       - name: Melos bootstrap (link workspace packages)
         run: dart pub global run melos bootstrap
 
